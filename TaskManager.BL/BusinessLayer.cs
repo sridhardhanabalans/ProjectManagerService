@@ -12,6 +12,7 @@ namespace TaskManager.BL
         DataLayer dalObj = null;
    
         #region Tasks
+        // Get All Tasks Method
         public List<Task> GetAllTasks()
         {
             dalObj = new DataLayer();
@@ -29,24 +30,28 @@ namespace TaskManager.BL
             return finalTasks;
         }
 
+        //Get All Parent Tasks
         public List<ParentTask> GetAllParentTasks()
         {
             dalObj = new DataLayer();
             return dalObj.GetAllParentTasks();
         }
 
+        //Add New Task
         public void AddTask(Task newTask)
         {
             dalObj = new DataLayer();
             dalObj.AddTask(newTask);
         }
 
+        //Update Existing Task Method
         public void UpdateTask(Task editTask)
         {
             dalObj = new DataLayer();
             dalObj.UpdateTask(editTask);
         }
 
+        //Delete Existing Task Method
         public void DeleteTask(int id)
         {
             dalObj = new DataLayer();
@@ -56,6 +61,7 @@ namespace TaskManager.BL
         #endregion
 
         #region Projects
+        //Get List of all projects
         public List<Project> GetAllProjects()
         {
             dalObj = new DataLayer();
@@ -64,7 +70,7 @@ namespace TaskManager.BL
             List<Project> finalProjects = new List<Project>();
             foreach (Project project in allProjects)
             {
-                //project.User_ID = allUsers.Where(m => m.Project_ID == project.Project_ID && m.Task_ID == null).FirstOrDefault().User_ID;
+                project.User_ID = allUsers.Where(m => m.Project_ID == project.Project_ID && m.Task_ID == null).FirstOrDefault().User_ID;
                 project.projectTotalTasks = allUsers.Where(m => m.Project_ID == project.Project_ID && m.Task_ID != null).Count();
                 project.projectTasksCompleted = dalObj.GetCompletedTasksByProjectId(project.Project_ID).Count();
                 finalProjects.Add(project);
@@ -72,18 +78,21 @@ namespace TaskManager.BL
             return finalProjects;
         }
 
+        //Add New Project
         public void AddProject(Project newProject)
         {
             dalObj = new DataLayer();
             dalObj.AddProject(newProject);
         }
 
+        //Update Exisitng Project
         public void UpdateProject(Project editProject)
         {
             dalObj = new DataLayer();
             dalObj.UpdateProject(editProject);
         }
 
+        //Delete Existing Project
         public void DeleteProject(int id)
         {
             dalObj = new DataLayer();
@@ -92,24 +101,26 @@ namespace TaskManager.BL
         #endregion
 
         #region Users
+        //Get all Users  Method returns List
         public List<User> GetAllUsers()
         {
             dalObj = new DataLayer();
             return dalObj.GetAllUsers();
         }
 
+        // Add New User 
         public void AddUser(User newUser)
         {
             dalObj = new DataLayer();
             dalObj.AddUser(newUser);
         }
-
+        // Update Existing User
         public void UpdateUser(User editUser)
         {
             dalObj = new DataLayer();
             dalObj.UpdateUser(editUser);
         }
-
+        //Delete Existing User
         public void DeleteUser(int id)
         {
             dalObj = new DataLayer();

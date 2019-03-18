@@ -9,18 +9,19 @@ namespace TaskManager.DL
     public class DataLayer
     {
         #region Tasks
+        //Get List of All Tasks
         public List<Task> GetAllTasks()
         {
             ProjectManagerContext pmContext = new ProjectManagerContext();
             return pmContext.Tasks.ToList();
         }
-
+        //Get List of All Parent Tasks
         public List<ParentTask> GetAllParentTasks()
         {
             ProjectManagerContext pmContext = new ProjectManagerContext();
             return pmContext.ParentTasks.ToList();
         }
-
+        //Get Completed Tasks by Project Id
         public List<Task> GetCompletedTasksByProjectId(int projectId)
         {
             ProjectManagerContext pmContext = new ProjectManagerContext();
@@ -28,6 +29,7 @@ namespace TaskManager.DL
             return tasks.ToList();
         }
 
+        // Add Tasks
         public void AddTask(Task newTask)
         {
             ProjectManagerContext pmContext = new ProjectManagerContext();
@@ -47,6 +49,7 @@ namespace TaskManager.DL
             pmContext.SaveChanges();
         }
 
+        // Update Tasks
         public void UpdateTask(Task editTask)
         {
             ProjectManagerContext pmContext = new ProjectManagerContext();
@@ -69,6 +72,7 @@ namespace TaskManager.DL
             pmContext.SaveChanges();
         }
 
+        // delete Tasks Method
         public void DeleteTask(int id)
         {
             ProjectManagerContext pmContext = new ProjectManagerContext();
@@ -83,6 +87,7 @@ namespace TaskManager.DL
 
         #endregion
 
+        //Get List of all projects
         #region Projects
         public List<Project> GetAllProjects()
         {
@@ -90,6 +95,7 @@ namespace TaskManager.DL
             return pmContext.Projects.ToList();
         }
 
+        // Add New Project
         public void AddProject(Project newProject)
         {
             ProjectManagerContext pmContext = new ProjectManagerContext();
@@ -108,7 +114,10 @@ namespace TaskManager.DL
             pmContext.SaveChanges();
         }
 
+
+        // Update Existing Project
         public void UpdateProject(Project editProject)
+
         {
             ProjectManagerContext pmContext = new ProjectManagerContext();
             var existingProject = pmContext.Projects.Where(m => m.Project_ID == editProject.Project_ID).FirstOrDefault();
@@ -131,6 +140,7 @@ namespace TaskManager.DL
 
         }
 
+        //Delete Existing project Method
         public void DeleteProject(int id)
         {
             ProjectManagerContext pmContext = new ProjectManagerContext();
@@ -145,12 +155,14 @@ namespace TaskManager.DL
         #endregion
 
         #region Users
+        // Get List of All Users
         public List<User> GetAllUsers()
         {
             ProjectManagerContext pmContext = new ProjectManagerContext();
             return pmContext.Users.ToList();
         }
 
+        //Add New Users
         public void AddUser(User newUser)
         {
             ProjectManagerContext pmContext = new ProjectManagerContext();
@@ -158,6 +170,7 @@ namespace TaskManager.DL
             pmContext.SaveChanges();
         }
 
+        // Update Existing User
         public void UpdateUser(User editUser)
         {
             ProjectManagerContext pmContext = new ProjectManagerContext();
@@ -171,6 +184,7 @@ namespace TaskManager.DL
             pmContext.SaveChanges();
         }
 
+        //Delete User
         public void DeleteUser(int id)
         {
             ProjectManagerContext pmContext = new ProjectManagerContext();

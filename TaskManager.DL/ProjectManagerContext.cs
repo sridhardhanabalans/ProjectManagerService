@@ -7,6 +7,7 @@ using TaskManager.Entities;
 
 namespace TaskManager.DL
 {
+    //Class used for Creating database connection
     class ProjectManagerContext : DbContext
     {
         public ProjectManagerContext() : base("ProjectManagerConnection")
