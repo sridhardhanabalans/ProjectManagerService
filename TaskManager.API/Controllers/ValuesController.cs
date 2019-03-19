@@ -15,6 +15,7 @@ namespace TaskManager.API.Controllers
         BusinessLayer blObject = null;
 
         [HttpGet]
+        //Method for Getting all Tasks
         [Route("api/Values/GetAllTasks")]
         [ResponseType(typeof(List<Task>))]
         public IHttpActionResult GetAllTasks()
@@ -25,6 +26,7 @@ namespace TaskManager.API.Controllers
         }
 
         [HttpGet]
+        //Method for Getting all Parent Tasks
         [Route("api/Values/GetAllParentTasks")]
         [ResponseType(typeof(List<ParentTask>))]
         public IHttpActionResult GetAllParentTasks()
@@ -36,6 +38,7 @@ namespace TaskManager.API.Controllers
 
         [HttpPost]
         [Route("api/Values/AddTask")]
+        //Method for Adding  new Task Item
         [ResponseType(typeof(void))]
         public IHttpActionResult AddTask([FromBody]Task newTask)
         {
@@ -50,6 +53,7 @@ namespace TaskManager.API.Controllers
 
         [HttpPut]
         [Route("api/Values/UpdateTask")]
+        //Method for Updating Existing Task Item
         [ResponseType(typeof(void))]
         public IHttpActionResult UpdateTask([FromBody]Task editTask)
         {
@@ -63,6 +67,7 @@ namespace TaskManager.API.Controllers
         }
 
         [HttpDelete]
+        //Method for Deleting Existing Task Item
         [Route("api/Values/DeleteTask/{Id}")]
         [ResponseType(typeof(void))]
         public IHttpActionResult DeleteTask(int Id)
@@ -73,6 +78,7 @@ namespace TaskManager.API.Controllers
         }
 
         [HttpGet]
+        //Method for Retrieving all Users
         [Route("api/Values/GetAllUsers")]
         [ResponseType(typeof(List<User>))]
         public IHttpActionResult GetAllUsers()
@@ -84,6 +90,7 @@ namespace TaskManager.API.Controllers
 
         [HttpPost]
         [Route("api/Values/AddUser")]
+        //Method for Adding New User
         [ResponseType(typeof(void))]
         public IHttpActionResult AddUser([FromBody]User newUser)
         {
@@ -97,6 +104,7 @@ namespace TaskManager.API.Controllers
         }
 
         [HttpPut]
+        //Method for Updating Existing User
         [Route("api/Values/UpdateUser")]
         [ResponseType(typeof(void))]
         public IHttpActionResult UpdateUser([FromBody]User editUser)
@@ -111,6 +119,7 @@ namespace TaskManager.API.Controllers
         }
 
         [HttpDelete]
+        //Method for Deleting Existing User
         [Route("api/Values/DeleteUser/{Id}")]
         [ResponseType(typeof(void))]
         public IHttpActionResult DeleteUser(int Id)
@@ -121,6 +130,7 @@ namespace TaskManager.API.Controllers
         }
 
         [HttpGet]
+        //Method for Retrieving all projects
         [Route("api/Values/GetAllProjects")]
         [ResponseType(typeof(List<Project>))]
         public IHttpActionResult GetAllProjects()
@@ -131,6 +141,7 @@ namespace TaskManager.API.Controllers
         }
 
         [HttpPost]
+        //Method for Adding New Project
         [Route("api/Values/AddProject")]
         [ResponseType(typeof(void))]
         public IHttpActionResult AddProject([FromBody]Project newProject)
@@ -141,6 +152,7 @@ namespace TaskManager.API.Controllers
         }
 
         [HttpPut]
+        //Method for Updating Existing Project
         [Route("api/Values/UpdateProject")]
         [ResponseType(typeof(void))]
         public IHttpActionResult UpdateProject([FromBody]Project editProject)
@@ -155,6 +167,7 @@ namespace TaskManager.API.Controllers
         }
 
         [HttpDelete]
+        //Method for Deleting Existing Project
         [Route("api/Values/DeleteProject/{Id}")]
         [ResponseType(typeof(void))]
         public IHttpActionResult DeleteProject(int Id)
