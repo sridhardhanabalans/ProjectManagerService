@@ -13,6 +13,7 @@ namespace TaskManager.BL.Tests
     {                                                                                                                                                                           
         BusinessLayer blObj = new BusinessLayer();
         [TestMethod()]
+        //Test Method for Get All Tasks
         public void GetAllTasksTest()
         {
             int result = blObj.GetAllTasks().Count;
@@ -20,6 +21,7 @@ namespace TaskManager.BL.Tests
         }
 
         [TestMethod()]
+        //Test Method for Get All Parent Tasks
         public void GetAllParentTasksTest()
         {
             int result = blObj.GetAllParentTasks().Count;
@@ -27,6 +29,7 @@ namespace TaskManager.BL.Tests
         }
 
         [TestMethod()]
+        //Test Method for Add New Task
         public void AddTaskTest()
         {
             Task task = new Task { Task_ID = 0, TaskName = "Seat Change", Parent = null, Start_Date = DateTime.Now.AddDays(-10), End_Date = DateTime.Now.AddDays(5), Parent_ID = null, Priority = 10, User_ID=1, IsParent = false, Project_ID =4 };
@@ -43,6 +46,7 @@ namespace TaskManager.BL.Tests
         }
 
         [TestMethod()]
+        //Test Method for Update Existing Task
         public void UpdateTaskTest()
         {
             Task task = new Task { Task_ID = 1, TaskName = "Seat Change", Parent = null, Start_Date = DateTime.Now.AddDays(-10), End_Date = DateTime.Now.AddDays(5), Parent_ID = null, Priority = 10, User_ID = 1, IsParent = false, Project_ID = 4 };
@@ -58,6 +62,7 @@ namespace TaskManager.BL.Tests
         }
 
         [TestMethod()]
+        //Test Method for Delete Existing Task
         public void DeleteTaskTest()
         {
             int id = 2;
@@ -74,6 +79,7 @@ namespace TaskManager.BL.Tests
         }
 
         [TestMethod()]
+        //Test Method for All Projects
         public void GetAllProjectsTest()
         {
             int result = blObj.GetAllProjects().Count;
@@ -82,6 +88,7 @@ namespace TaskManager.BL.Tests
         }
 
         [TestMethod()]
+        //Test Method for Add New Project
         public void AddProjectTest()
         {
             Project project = new Project { Project_ID=0, StartDate=DateTime.Now, EndDate=DateTime.Now.AddDays(10), ProjectName="Mahindra Bolero", Priority=9, User_ID=1 };
@@ -97,6 +104,7 @@ namespace TaskManager.BL.Tests
         }
 
         [TestMethod()]
+        //Test Method for Update Existing Task
         public void UpdateProjectTest()
         {
             Project project = new Project { Project_ID = 3, StartDate = DateTime.Now, EndDate = DateTime.Now.AddDays(10), ProjectName = "Mahindra Bolero", Priority = 9, User_ID = 1 };
@@ -112,6 +120,7 @@ namespace TaskManager.BL.Tests
         }
 
         [TestMethod()]
+        //Test Method for Delete Project
         public void DeleteProjectTest()
         {
             int id = 7;
@@ -128,6 +137,7 @@ namespace TaskManager.BL.Tests
         }
 
         [TestMethod()]
+        //Test Method for All Users
         public void GetAllUsersTest()
         {
             int result = blObj.GetAllUsers().Count;
@@ -135,6 +145,7 @@ namespace TaskManager.BL.Tests
         }
 
         [TestMethod()]
+        //Test Method for Add User
         public void AddUserTest()
         {
             User user = new User { User_ID=0, FirstName="Brain", LastName="Lara", Employee_ID=1031};
@@ -150,6 +161,7 @@ namespace TaskManager.BL.Tests
         }
 
         [TestMethod()]
+        //Test Method for Update USer
         public void UpdateUserTest()
         {
             User user = new User { User_ID = 10, FirstName = "Brain", LastName = "Lara", Employee_ID = 1031 };
@@ -165,6 +177,7 @@ namespace TaskManager.BL.Tests
         }
 
         [TestMethod()]
+        //Test Method for Delete User
         public void DeleteUserTest()
         {
             int id = 12;
