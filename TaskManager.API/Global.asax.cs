@@ -11,6 +11,7 @@ namespace TaskManager.API
 {
     public class WebApiApplication : System.Web.HttpApplication
     {
+        //Application Start Event
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();

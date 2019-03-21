@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 namespace TaskManager.Entities
 {
     [Table("User")]
+    //Entity User Class
     public class User
     {
         [Key]
