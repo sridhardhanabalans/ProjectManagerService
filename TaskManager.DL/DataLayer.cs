@@ -66,10 +66,13 @@ namespace TaskManager.DL
             var newUser = pmContext.Users.Where(m => m.User_ID == editTask.User_ID).FirstOrDefault();
 
             var existingUser = pmContext.Users.Where(m => m.Task_ID == editTask.Task_ID).FirstOrDefault();
+            if(newUser!=null)
+            { 
             existingUser.Employee_ID = newUser.Employee_ID;
             existingUser.FirstName = newUser.FirstName;
             existingUser.LastName = newUser.LastName;
             pmContext.SaveChanges();
+            }
         }
 
         // delete Tasks Method
@@ -77,9 +80,11 @@ namespace TaskManager.DL
         {
             ProjectManagerContext pmContext = new ProjectManagerContext();
             var existingUser = pmContext.Users.Where(m => m.Task_ID == id).FirstOrDefault();
+            if(existingUser!=null)
+            { 
             existingUser.Task_ID = null;
             pmContext.SaveChanges();
-
+            }
             var deleteTask = pmContext.Tasks.Where(m => m.Task_ID == id).FirstOrDefault();
             pmContext.Tasks.Remove(deleteTask);
             pmContext.SaveChanges();
@@ -145,8 +150,11 @@ namespace TaskManager.DL
         {
             ProjectManagerContext pmContext = new ProjectManagerContext();
             var existingUser = pmContext.Users.Where(m => m.Project_ID == id && m.Task_ID == null).FirstOrDefault();
+            if(existingUser!=null)
+            { 
             existingUser.Project_ID = null;
             pmContext.SaveChanges();
+            }
 
             var deleteProject = pmContext.Projects.Where(m => m.Project_ID == id).FirstOrDefault();
             pmContext.Projects.Remove(deleteProject);
@@ -159,7 +167,10 @@ namespace TaskManager.DL
         public List<User> GetAllUsers()
         {
             ProjectManagerContext pmContext = new ProjectManagerContext();
-            return pmContext.Users.ToList();
+            List<User> UserList = new List<User>();
+            UserList = pmContext.Users.Distinct().ToList();
+            UserList = UserList.GroupBy(i => i.Employee_ID).Select(g => g.First()).ToList();
+            return UserList;
         }
 
         //Add New Users

@@ -70,7 +70,18 @@ namespace TaskManager.BL
             List<Project> finalProjects = new List<Project>();
             foreach (Project project in allProjects)
             {
-                project.User_ID = allUsers.Where(m => m.Project_ID == project.Project_ID && m.Task_ID == null).FirstOrDefault().User_ID;
+                foreach(User user in allUsers)
+                {
+                    if (user.Project_ID == project.Project_ID && user.Task_ID == null && user.User_ID > 0)
+                    {
+                        project.User_ID = user.User_ID;
+
+                    }
+                    
+                }
+                //if(allUsers("Project_ID").Project_ID==project.Project_ID && )
+                //project.User_ID = allUsers.Where(m => m.Project_ID == project.Project_ID && m.Task_ID == null && m.User_ID>0).FirstOrDefault().User_ID;
+                //project.User_ID = allUsers.Where(m => m.Project_ID == project.Project_ID && m.Task_ID == null).FirstOrDefault().User_ID;
                 project.projectTotalTasks = allUsers.Where(m => m.Project_ID == project.Project_ID && m.Task_ID != null).Count();
                 project.projectTasksCompleted = dalObj.GetCompletedTasksByProjectId(project.Project_ID).Count();
                 finalProjects.Add(project);
